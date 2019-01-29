@@ -1,0 +1,44 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "leetcode and algorithms",
+  "main": "index.js",
+  "scripts": {
+    "ncu": "ncu -a",
+    "test": "jest --watch",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' -t verbose",
+    "lint-staged:ts": "tslint -c tslint.json"
+  },
+  "author": "lyw",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json}": [
+      "prettier --config .prettierrc --write",
+      "git add"
+    ],
+    "**/*.{ts}": "npm run lint-staged:ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "husky": "^1.3.1",
+    "jest": "^24.0.0",
+    "lint-staged": "^8.1.1",
+    "prettier": "^1.16.1",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0"
+  }
+}
