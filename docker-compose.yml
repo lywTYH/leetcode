@@ -1,0 +1,9 @@
+version: "3.5"
+
+services:
+  test:
+    build: ./
+    image: leetcode:test
+    container_name: "test"
+    volumes:
+      - /usr/src/app/node_modules

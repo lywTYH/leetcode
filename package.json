@@ -1,0 +1,48 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "leetcode and algorithms",
+  "main": "index.js",
+  "scripts": {
+    "ncu": "ncu -a",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' -t verbose",
+    "lint-staged:ts": "tslint -c tslint.json",
+    "docker:dev": "docker-compose -f ./docker-compose.yml up",
+    "docker:build": "docker-compose -f ./docker-compose.yml build"
+  },
+  "author": "lyw",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json}": [
+      "prettier --config .prettierrc --write",
+      "git add"
+    ],
+    "**/*.{ts}": "npm run lint-staged:ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "typescript": "^3.3.3333"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.9",
+    "cross-env": "^5.2.0",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "lint-staged": "^8.1.4",
+    "prettier": "^1.16.4",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.13.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript-tslint-plugin": "^0.3.1"
+  }
+}

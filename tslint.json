@@ -1,0 +1,22 @@
+{
+  "extends": ["tslint:latest", "tslint:recommended", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts", "coverage/lcov-report/*.js"]
+  },
+  "rules": {
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "arrow-return-shorthand": true,
+    "no-console": true,
+    "no-debugger": true,
+    "no-empty-interface": true,
+    "no-object-literal-type-assertion": true,
+    "no-shadowed-variable": true,
+    "no-submodule-imports": true,
+    "no-var-requires": true,
+    "ordered-imports": true,
+    "prefer-conditional-expression": true,
+    "radix": true,
+    "trailing-comma": true,
+    "max-line-length": [true, 120]
+  }
+}
