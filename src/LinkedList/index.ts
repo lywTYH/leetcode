@@ -1,4 +1,4 @@
-import Comparator, { DefineCompare } from '../utils/Comparator';
+import Comparator, { DefineCompare } from '../utils/comparator';
 import LinkedListNode, { LinkNode } from './ListNode';
 
 /**
