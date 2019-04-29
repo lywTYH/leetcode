@@ -5,7 +5,7 @@ services:
     image: leetcode:test
     working_dir: /usr/src/app/
     volumes:
-      #   - nodemodules:/usr/src/app/node_modules
+      - nodemodules:/usr/src/app/node_modules
       - .:/usr/src/app
     environment:
       - NODE_ENV=test
@@ -13,6 +13,6 @@ services:
     ports:
       - '8000:8000'
       - '1235:1235'
-# volumes:
-#   nodemodules:
-#     external: true
+volumes:
+  nodemodules:
+    external: true
