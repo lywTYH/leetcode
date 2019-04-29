@@ -130,7 +130,10 @@ describe('LinkedList', () => {
   });
 
   it('should be possible to store objects in the list and to print them out', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<{
+      value: number;
+      key: string;
+    }>();
 
     const nodeValue1 = { value: 1, key: 'key1' };
     const nodeValue2 = { value: 2, key: 'key2' };

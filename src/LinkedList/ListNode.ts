@@ -1,6 +1,4 @@
-export type LinkNode = object | number | string;
-
-export default class LinkedListNode<T = LinkNode> {
+export default class LinkedListNode<T> {
   public value: T;
   public next?: LinkedListNode<T>;
 

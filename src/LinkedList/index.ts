@@ -1,5 +1,5 @@
-import Comparator, { DefineCompare } from '../utils/comparator';
-import LinkedListNode, { LinkNode } from './ListNode';
+import Comparator, { DefineCompare } from '../util/Comparator';
+import LinkedListNode from './ListNode';
 
 /**
  * @description
@@ -7,16 +7,16 @@ import LinkedListNode, { LinkNode } from './ListNode';
  *    2. 内部存储元素有序(输出顺序与输入顺序一致)
  * @class LinkedList
  */
-export default class LinkedList {
+export default class LinkedList<T> {
   public compare: Comparator;
-  public head?: LinkedListNode;
-  public tail?: LinkedListNode;
+  public head?: LinkedListNode<T>;
+  public tail?: LinkedListNode<T>;
 
   constructor(comparator?: DefineCompare) {
     this.compare = new Comparator(comparator);
   }
 
-  public prepend(value: LinkNode) {
+  public prepend(value: T) {
     const newNode = new LinkedListNode(value, this.head);
     this.head = newNode;
     if (!this.tail) {
@@ -25,7 +25,7 @@ export default class LinkedList {
     return this;
   }
 
-  public append(value: LinkNode) {
+  public append(value: T) {
     const newNode = new LinkedListNode(value);
     if (!this.head) {
       this.head = newNode;
@@ -37,7 +37,7 @@ export default class LinkedList {
     return this;
   }
 
-  public delete(value: object | number | string) {
+  public delete(value: T) {
     if (!this.head) {
       return undefined;
     }
@@ -97,17 +97,19 @@ export default class LinkedList {
     return deletedHead;
   }
 
-  public find(value: LinkNode) {
+  public find(value: T) {
     if (!this.head) {
       return undefined;
-    }
-    let currentNode: LinkedListNode | undefined = this.head;
-    while (currentNode) {
-      if (value && this.compare.equal(currentNode.value, value)) {
-        return currentNode;
+    } else {
+      let currentNode = this.head;
+      while (currentNode) {
+        if (value && this.compare.equal(currentNode.value, value)) {
+          return currentNode;
+        }
+        currentNode = currentNode.next!;
       }
-      currentNode = currentNode.next;
     }
+
     return undefined;
   }
 
@@ -121,7 +123,7 @@ export default class LinkedList {
     return nodes;
   }
 
-  public toString(callback?: (val: LinkNode) => string) {
+  public toString(callback?: (val: T) => string) {
     return this.toArray()
       .map(node => node.toString(callback))
       .toString();
