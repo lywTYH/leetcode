@@ -5,4 +5,5 @@ USER root
 COPY package.json ./
 RUN yarn
 COPY ./ ./
-RUN yarn lint && yarn test
+# RUN yarn lint && yarn test:watch
+# CMD [ "yarn", "start" ]
