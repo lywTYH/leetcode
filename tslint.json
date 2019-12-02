@@ -11,7 +11,7 @@
     "no-empty-interface": true,
     "no-object-literal-type-assertion": true,
     "no-shadowed-variable": true,
-    "no-submodule-imports": true,
+    "no-submodule-imports": false,
     "no-var-requires": true,
     "ordered-imports": true,
     "prefer-conditional-expression": true,

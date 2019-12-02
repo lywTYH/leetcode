@@ -7,7 +7,7 @@ describe('LinkedList', () => {
   });
 
   it('should append node to linked list', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<number>();
     expect(linkedList.head).toBeUndefined();
     expect(linkedList.tail).toBeUndefined();
     linkedList.append(1);
@@ -16,7 +16,7 @@ describe('LinkedList', () => {
   });
 
   it('should prepend node to linked list', () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<number>();
     linkedList.prepend(2);
     expect(linkedList.head!.toString()).toBe('2');
     expect(linkedList.tail!.toString()).toBe('2');
@@ -142,6 +142,7 @@ describe('LinkedList', () => {
 
     expect(linkedList.toString(value => `${value.key}:${value.value}`)).toBe('key2:2,key1:1');
   });
+
   it('should find node by value', () => {
     const linkedList = new LinkedList();
 

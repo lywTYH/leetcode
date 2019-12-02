@@ -1,4 +1,4 @@
-import Comparator, { DefineCompare } from '../util/Comparator';
+import Comparator, { Compare } from '../util/Comparator';
 import LinkedListNode from './ListNode';
 
 /**
@@ -8,12 +8,23 @@ import LinkedListNode from './ListNode';
  * @class LinkedList
  */
 export default class LinkedList<T> {
-  public compare: Comparator;
   public head?: LinkedListNode<T>;
   public tail?: LinkedListNode<T>;
+  public compare: Comparator<T>;
 
-  constructor(comparator?: DefineCompare) {
-    this.compare = new Comparator(comparator);
+  constructor(comparator?: Compare<T>) {
+    this.compare = new Comparator<T>(comparator);
+  }
+
+  public append(value: T) {
+    const newNode = new LinkedListNode(value);
+    if (!this.head || !this.tail) {
+      this.head = this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    return this;
   }
 
   public prepend(value: T) {
@@ -25,39 +36,27 @@ export default class LinkedList<T> {
     return this;
   }
 
-  public append(value: T) {
-    const newNode = new LinkedListNode(value);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-      return this;
-    }
-    this.tail!.next = newNode;
-    this.tail = newNode;
-    return this;
-  }
-
   public delete(value: T) {
     if (!this.head) {
-      return undefined;
+      return;
     }
-    let deletedNode;
+    let deletedNode: LinkedListNode<T> | undefined;
     while (this.head && this.compare.equal(this.head.value, value)) {
       deletedNode = this.head;
       this.head = this.head.next;
     }
     let currentNode = this.head;
-    if (currentNode !== undefined) {
-      while (currentNode!.next) {
-        if (this.compare.equal(currentNode!.next!.value, value)) {
-          deletedNode = currentNode!.next;
-          currentNode!.next = currentNode!.next!.next;
+    if (currentNode) {
+      while (currentNode.next) {
+        if (this.compare.equal(currentNode.next.value, value)) {
+          deletedNode = currentNode.next;
+          currentNode.next = currentNode.next.next;
         } else {
-          currentNode = currentNode!.next;
+          currentNode = currentNode.next;
         }
       }
     }
-    if (this.compare.equal(this.tail!.value, value)) {
+    if (this.tail && this.compare.equal(this.tail.value, value)) {
       this.tail = currentNode;
     }
     return deletedNode;
@@ -66,55 +65,48 @@ export default class LinkedList<T> {
   public deleteTail() {
     if (this.head === this.tail) {
       const tmp = this.tail;
-      this.head = undefined;
-      this.tail = undefined;
+      this.head = this.tail = undefined;
       return tmp;
     }
-    const deletedTail = this.tail;
+    const deleteTail = this.tail;
     let currentNode = this.head;
-    while (currentNode!.next) {
-      if (!currentNode!.next!.next) {
-        currentNode!.next = undefined;
+    while (currentNode && currentNode.next) {
+      if (!currentNode.next.next) {
+        currentNode.next = undefined;
       } else {
-        currentNode = currentNode!.next;
+        currentNode = currentNode.next;
       }
     }
     this.tail = currentNode;
-    return deletedTail;
+    return deleteTail;
   }
 
   public deleteHead() {
     if (!this.head) {
-      return undefined;
+      return;
     }
     const deletedHead = this.head;
     if (this.head.next) {
       this.head = this.head.next;
     } else {
-      this.tail = undefined;
-      this.head = undefined;
+      this.tail = this.head = undefined;
     }
     return deletedHead;
   }
 
   public find(value: T) {
-    if (!this.head) {
-      return undefined;
-    } else {
-      let currentNode = this.head;
-      while (currentNode) {
-        if (value && this.compare.equal(currentNode.value, value)) {
-          return currentNode;
-        }
-        currentNode = currentNode.next!;
+    let currentNode = this.head;
+    while (currentNode) {
+      if (this.compare.equal(currentNode.value, value)) {
+        return currentNode;
       }
+      currentNode = currentNode.next;
     }
-
-    return undefined;
+    return;
   }
 
   public toArray() {
-    const nodes = [];
+    const nodes: Array<LinkedListNode<T>> = [];
     let currentNode = this.head;
     while (currentNode) {
       nodes.push(currentNode);
