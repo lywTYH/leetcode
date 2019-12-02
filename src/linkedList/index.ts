@@ -94,10 +94,13 @@ export default class LinkedList<T> {
     return deletedHead;
   }
 
-  public find(value: T) {
+  public find(value?: T, callback?: (v: T) => boolean) {
     let currentNode = this.head;
     while (currentNode) {
-      if (this.compare.equal(currentNode.value, value)) {
+      if (callback && callback(currentNode.value)) {
+        return currentNode;
+      }
+      if (typeof value !== 'undefined' && this.compare.equal(currentNode.value, value)) {
         return currentNode;
       }
       currentNode = currentNode.next;
