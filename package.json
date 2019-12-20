@@ -8,13 +8,32 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --env=jsdom",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "lint": "tslint -c tslint.json 'src/**/*.ts' -t verbose",
-    "lint-staged:ts": "tslint -c tslint.json"
+    "lint": "eslint './src/**/*.ts'",
+    "lint-staged:ts": "eslint"
   },
   "author": "lyw",
   "license": "MIT",
   "engines": {
     "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "typescript": "^3.7.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "@types/node": "^12.12.21",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.5.0",
+    "npm-check-updates": "^4.0.1",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0"
   },
   "lint-staged": {
     "**/*.{js,ts,json}": [
@@ -27,23 +46,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "dependencies": {
-    "benchmark": "^2.1.4",
-    "typescript": "^3.6.4"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.20",
-    "@types/node": "^12.11.7",
-    "cross-env": "^6.0.3",
-    "husky": "^3.0.9",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.4.2",
-    "npm-check-updates": "^3.1.25",
-    "prettier": "^1.18.2",
-    "ts-jest": "^24.1.0",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript-tslint-plugin": "^0.5.4"
   }
 }
