@@ -13,4 +13,8 @@ export default class Heap<T> {
     this.heapifyUp();
     return this;
   }
+  heapifyUp() {
+    throw new Error('Method not implemented.');
+  }
 }
+//https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/heap
