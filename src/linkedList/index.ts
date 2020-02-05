@@ -1,4 +1,4 @@
-import Comparator, { Compare } from '../util/Comparator';
+import Comparator, { Compare } from '../Util/Comparator';
 import LinkedListNode from './listNode';
 
 /**

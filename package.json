@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --env=jsdom",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint './src/**/*.ts'",
+    "lint": "eslint \"./src/**/*.ts\"",
     "lint-staged:ts": "eslint"
   },
   "author": "lyw",

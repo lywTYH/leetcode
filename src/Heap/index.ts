@@ -1,4 +1,4 @@
-import Comparator, { Compare } from 'util/Comparator';
+import Comparator, { Compare } from 'Util/Comparator';
 
 export default class Heap<T> {
   public heapContainer: T[];
