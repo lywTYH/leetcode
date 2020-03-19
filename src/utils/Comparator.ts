@@ -1,5 +1,5 @@
 export type Compare<T> = (a: T, b: T) => 1 | 0 | -1;
-class Comparator<T = string | number | object> {
+export default class Comparator<T = string | number | object> {
   private compare: Compare<T>;
   constructor(compare?: Compare<T>) {
     this.compare = compare || this.defaultCompare;
@@ -37,4 +37,3 @@ class Comparator<T = string | number | object> {
     return a < b ? -1 : 1;
   };
 }
-export default Comparator;

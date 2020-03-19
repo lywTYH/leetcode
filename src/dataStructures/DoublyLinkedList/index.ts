@@ -1,5 +1,5 @@
-import Comparator, { Compare } from 'Util/Comparator';
-import DoublyLinkedListNode from './doublyLinkedListNode';
+import DoublyLinkedListNode from './DoublyLinkedListNode';
+import Comparator, { Compare } from '../../utils/Comparator';
 
 export default class DoublyLinkedList<T> {
   public head?: DoublyLinkedListNode<T>;
@@ -12,8 +12,7 @@ export default class DoublyLinkedList<T> {
   public append(value: T) {
     const newNode = new DoublyLinkedListNode(value);
     if (!this.head || !this.tail) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = this.tail = newNode;
       return this;
     } else {
       this.tail.next = newNode;
@@ -34,13 +33,12 @@ export default class DoublyLinkedList<T> {
     }
     return this;
   }
-
   public delete(value: T) {
-    if (!this.head) {
+    let deleteNode: DoublyLinkedListNode<T> | undefined;
+    let currentNode = this.head;
+    if (!currentNode) {
       return;
     }
-    let deleteNode: DoublyLinkedListNode<T> | undefined;
-    let currentNode: DoublyLinkedListNode<T> | undefined = this.head;
     while (currentNode) {
       if (this.compare.equal(currentNode.value, value)) {
         deleteNode = currentNode;
@@ -82,31 +80,32 @@ export default class DoublyLinkedList<T> {
   }
 
   public deleteTail() {
-    if (!this.tail) {
-      return;
+    const deleteNode = this.tail;
+    if (this.tail) {
+      if (this.head === this.tail) {
+        this.head = this.tail = undefined;
+      } else {
+        this.tail = this.tail.previous!;
+        this.tail.next = undefined;
+      }
     }
-    const deleteTail = this.tail;
-    if (this.head === this.tail) {
-      this.head = this.tail = undefined;
-    } else {
-      this.tail = this.tail.previous!;
-      this.tail.next = undefined;
-    }
-    return deleteTail;
+    return deleteNode;
   }
-
   public deleteHead() {
-    if (!this.head) {
-      return;
+    const deleteNode = this.head;
+    if (this.head) {
+      if (this.head === this.tail) {
+        this.head = this.tail = undefined;
+      } else {
+        this.head = this.head.next!;
+        this.head.previous = undefined;
+      }
     }
-    const deleteHead = this.head;
-    if (this.head.next) {
-      this.head = this.head.next;
-      this.head.previous = undefined;
-    } else {
-      this.head = this.tail = undefined;
-    }
-    return deleteHead;
+    return deleteNode;
+  }
+  public fromArray(values: T[]) {
+    values.forEach(value => this.append(value));
+    return this;
   }
 
   public toArray() {
@@ -118,27 +117,9 @@ export default class DoublyLinkedList<T> {
     }
     return nodes;
   }
-
-  public toString(callback: (v: T) => string) {
+  public toString(callback?: (v: T) => string) {
     return this.toArray()
       .map(node => node.toString(callback))
       .toString();
-  }
-
-  public reverse() {
-    let currentNode = this.head;
-    let preNode: DoublyLinkedListNode<T> | undefined;
-    let nextNode: DoublyLinkedListNode<T> | undefined;
-    while (currentNode) {
-      nextNode = currentNode.next;
-      preNode = currentNode.previous;
-      currentNode.next = preNode;
-      currentNode.previous = nextNode;
-      preNode = currentNode;
-      currentNode = nextNode;
-    }
-    this.tail = this.head;
-    this.head = preNode;
-    return this;
   }
 }
