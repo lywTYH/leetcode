@@ -41,10 +41,5 @@
       "git add"
     ],
     "**/*.{ts}": "npm run lint-staged:ts"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

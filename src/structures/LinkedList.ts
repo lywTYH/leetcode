@@ -1,12 +1,19 @@
-import Comparator, { Compare } from '../../utils/Comparator';
-import LinkedListNode from './listNode';
+import Comparator, { Compare } from '../utils/Comparator';
 
-/**
- * @description
- *    1. LinkedList 以链表的形式存储数据、对增删元素有很高的效率、查询效率较低
- *    2. 内部存储元素有序(输出顺序与输入顺序一致)
- * @class LinkedList
- */
+export class LinkedListNode<T = number> {
+  public value: T;
+  public next?: LinkedListNode<T>;
+
+  constructor(val: T, next?: LinkedListNode<T>) {
+    this.value = val;
+    this.next = next;
+  }
+
+  public toString(callback?: (val: T) => string) {
+    return callback ? callback(this.value) : `${this.value}`;
+  }
+}
+
 export default class LinkedList<T> {
   public head?: LinkedListNode<T>;
   public tail?: LinkedListNode<T>;

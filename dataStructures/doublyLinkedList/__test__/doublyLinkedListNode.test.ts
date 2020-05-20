@@ -1,4 +1,4 @@
-import DoublyLinkedListNode from '../DoublyLinkedListNode';
+import doublyLinkedListNode from '../doublyLinkedListNode';
 
 describe('DoublyLinkedListNode', () => {
   it('should create list node with value', () => {

@@ -1,5 +1,5 @@
-import DoublyLinkedListNode from './DoublyLinkedListNode';
-import Comparator, { Compare } from '../../utils/Comparator';
+import DoublyLinkedListNode from './doublyLinkedListNode';
+import Comparator, { Compare } from '../../utils/comparator';
 
 export default class DoublyLinkedList<T> {
   public head?: DoublyLinkedListNode<T>;
