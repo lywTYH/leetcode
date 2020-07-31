@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "plugins": [
       {
         "name": "typescript-tslint-plugin"
@@ -15,7 +16,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "noEmit": true,
-    "isolatedModules": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
@@ -26,7 +26,8 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "isolatedModules": false
   },
   "include": ["src"],
   "exclude": ["node_modules"]
