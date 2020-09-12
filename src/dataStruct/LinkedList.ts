@@ -42,14 +42,17 @@ export default class LinkedList<T = string | number> {
 
   public delete(value: T) {
     if (!this.head || !this.tail) {
-      return this;
+      return;
     }
+    let deleteNode: Node<T> | undefined = undefined;
     while (this.head && this.compare.equal(this.head.value, value)) {
+      deleteNode = this.head;
       this.head = this.head.next;
     }
     let currentNode = this.head;
     while (currentNode && currentNode.next) {
       if (this.compare.equal(currentNode.next.value, value)) {
+        deleteNode = currentNode.next;
         currentNode.next = currentNode.next.next;
       } else {
         currentNode = currentNode.next;
@@ -58,16 +61,17 @@ export default class LinkedList<T = string | number> {
     if (this.compare.equal(this.tail.value, value)) {
       this.tail = currentNode;
     }
-    return this;
+    return deleteNode;
   }
 
   public deleteTail() {
     if (!this.tail) {
-      return this;
+      return;
     }
+    const deleteTailNode = this.tail;
     if (this.head === this.tail) {
       this.head = this.tail = undefined;
-      return this;
+      return deleteTailNode;
     }
     let nextTailNode = this.head;
     while (nextTailNode && nextTailNode.next) {
@@ -78,19 +82,20 @@ export default class LinkedList<T = string | number> {
       }
     }
     this.tail = nextTailNode;
-    return this;
+    return deleteTailNode;
   }
 
   public deleteHead() {
     if (!this.head) {
-      return this;
+      return;
     }
-    if (this.head === this.tail) {
+    const deleteHeadNode = this.head;
+    if (this.head.next) {
+      this.head = this.head.next;
+    } else {
       this.head = this.tail = undefined;
-      return this;
     }
-    this.head = this.head.next;
-    return this;
+    return deleteHeadNode;
   }
 
   public find(val: T) {

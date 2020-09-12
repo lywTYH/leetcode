@@ -43,22 +43,22 @@ describe('LinkedList', () => {
     expect(linkedList.head!.toString()).toBe('1');
     expect(linkedList.tail!.toString()).toBe('5');
 
-    expect(linkedList.delete(3).find(3)).toBeUndefined();
+    expect(linkedList.delete(3)?.value).toBe(3);
     expect(linkedList.toString()).toBe('1,1,2,4,5');
 
-    expect(linkedList.delete(1).toString()).toBe('2,4,5');
+    expect(linkedList.delete(1)?.value).toBe(1);
     expect(linkedList.head!.toString()).toBe('2');
     expect(linkedList.tail!.toString()).toBe('5');
 
-    expect(linkedList.delete(5).toString()).toBe('2,4');
+    expect(linkedList.delete(5)?.value).toBe(5);
     expect(linkedList.head!.toString()).toBe('2');
     expect(linkedList.tail!.toString()).toBe('4');
 
-    expect(linkedList.delete(4).toString()).toBe('2');
+    expect(linkedList.delete(4)?.value).toBe(4);
     expect(linkedList.head!.toString()).toBe('2');
     expect(linkedList.tail!.toString()).toBe('2');
 
-    expect(linkedList.delete(2).toString()).toBe('');
+    expect(linkedList.delete(2)!.value).toBe(2);
   });
 
   it('should delete linked list tail', () => {
@@ -71,15 +71,15 @@ describe('LinkedList', () => {
     expect(linkedList.head!.toString()).toBe('1');
     expect(linkedList.tail!.toString()).toBe('3');
 
-    expect(linkedList.deleteTail().toString()).toBe('1,2');
+    expect(linkedList.deleteTail()?.value).toBe(3);
     expect(linkedList.head!.toString()).toBe('1');
     expect(linkedList.tail!.toString()).toBe('2');
 
-    expect(linkedList.deleteTail().toString()).toBe('1');
+    expect(linkedList.deleteTail()?.value).toBe(2);
     expect(linkedList.head!.toString()).toBe('1');
     expect(linkedList.tail!.toString()).toBe('1');
 
-    expect(linkedList.deleteTail().toString()).toBe('');
+    expect(linkedList.deleteTail()!.value).toBe(1);
     expect(linkedList.head).toBeUndefined();
     expect(linkedList.tail).toBeUndefined();
   });
@@ -91,11 +91,11 @@ describe('LinkedList', () => {
     expect(linkedList.head!.toString()).toBe('1');
     expect(linkedList.tail!.toString()).toBe('2');
 
-    expect(linkedList.deleteHead().toString()).toBe('2');
+    expect(linkedList.deleteHead()?.value).toBe(1);
     expect(linkedList.head!.toString()).toBe('2');
     expect(linkedList.tail!.toString()).toBe('2');
 
-    expect(linkedList.deleteHead().toString()).toBe('');
+    expect(linkedList.deleteHead()?.value).toBe(2);
     expect(linkedList.head).toBeUndefined();
     expect(linkedList.tail).toBeUndefined();
   });
