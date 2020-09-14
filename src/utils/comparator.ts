@@ -27,12 +27,9 @@ export default class Comparator<T = number> {
   };
 
   private defaultCompare(a: T, b: T) {
-    if (typeof a === 'number' && typeof b === 'number') {
-      if (a === b) {
-        return 0;
-      }
-      return a > b ? 1 : -1;
+    if (a === b) {
+      return 0;
     }
-    throw Error('default compare only support number');
+    return a > b ? 1 : -1;
   }
 }
