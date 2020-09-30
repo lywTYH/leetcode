@@ -8,7 +8,7 @@ describe('DoublyLinkedList', () => {
   it('should append node to linked list', () => {
     const linkedList = new DoublyLinkedList<number>();
     expect(linkedList.head).toBeUndefined();
-    expect(linkedList.tail).toBeUndefined();
+    expect(linkedList.tail).toBeNull();
     linkedList.append(1).append(2);
     expect(linkedList.head!.next!.value).toBe(2);
     expect(linkedList.tail!.previous!.value).toBe(1);
