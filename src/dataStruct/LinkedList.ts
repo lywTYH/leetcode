@@ -102,6 +102,7 @@ export default class LinkedList<T = string | number> {
     const callback = (nodeValue: T) => {
       return this.compare.equal(nodeValue, val);
     };
+    console.log(1);
     return this.findByCallback(callback);
   }
 
