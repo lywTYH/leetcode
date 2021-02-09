@@ -19,7 +19,8 @@ export default class HashTable<T = string | number> {
    * @param {string} key
    * @return {number}
    */
-  hash(key: string) {
+
+  hash(key: string): number {
     const hashKey = Array.from(key).reduce((hashAccumulator, keySymbol) => {
       return hashAccumulator + keySymbol.charCodeAt(0);
     }, 0);
@@ -60,6 +61,7 @@ export default class HashTable<T = string | number> {
     }
     return bucketLinkedList.delete(node.value);
   }
+
   getKeys() {
     return Object.keys(this.keys);
   }
