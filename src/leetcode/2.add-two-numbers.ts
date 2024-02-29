@@ -4,7 +4,7 @@
  * [2] Add Two Numbers
  */
 
-export class ListNode {
+class ListNode {
   val: number;
   next: ListNode | null;
   constructor(val?: number, next?: ListNode | null) {
@@ -59,5 +59,3 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
   return result.next;
 }
 // @lc code=end
-
-export default addTwoNumbers;

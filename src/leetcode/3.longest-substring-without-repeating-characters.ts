@@ -23,5 +23,3 @@ function lengthOfLongestSubstring(str: string): number {
   return maxLength;
 }
 // @lc code=end
-
-export default lengthOfLongestSubstring;
