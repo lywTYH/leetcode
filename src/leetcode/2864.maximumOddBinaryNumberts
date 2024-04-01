@@ -1,0 +1,16 @@
+/*
+ * @lc app=leetcode.cn id=2864 lang=typescript
+ *
+ * [2864] 最大二进制奇数
+ */
+
+// @lc code=start
+function maximumOddBinaryNumber(s) {
+  let ans = '';
+  for (let i = 0; i < s.length; i++) {
+    ans = s[i] === '1' ? s[i] + ans : ans + s[i];
+  }
+  return ans.slice(1, ans.length) + '1';
+}
+// @lc code=end
+maximumOddBinaryNumber('010');
