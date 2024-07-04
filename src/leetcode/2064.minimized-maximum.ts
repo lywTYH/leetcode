@@ -5,7 +5,7 @@
  */
 // @lc code=start
 function minimizedMaximum(n: number, quantities: number[]): number {
-  let len = quantities.length;
+  const len = quantities.length;
   const maxNum = Math.max(...quantities);
   if (len === 1 || len === n) return maxNum;
 

@@ -30,8 +30,6 @@ function combinationSum2(candidates: number[], target: number): number[][] {
   return ans;
 }
 // @lc code=end
-const as = combinationSum2([2, 5, 2, 1, 2], 5);
-console.log(as);
 //  0  1  2  3
 // [1, 1, 2, 5, 6, 7, 10];
 //  1 1 6

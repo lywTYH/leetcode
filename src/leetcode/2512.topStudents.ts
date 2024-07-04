@@ -45,13 +45,3 @@ function topStudents(
   return feedBacks.slice(0, k).map((f) => f.id);
 }
 // @lc code=end
-
-const res = topStudents(
-  ['smart', 'brilliant', 'studious'],
-  ['not'],
-  ['this student is studious', 'the student is smart'],
-  [1, 2],
-  2
-);
-
-console.log(res, 'res');

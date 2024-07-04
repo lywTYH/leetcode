@@ -13,5 +13,3 @@ function subsets(nums: number[]): number[][] {
   return ans;
 }
 // @lc code=end
-
-console.log(subsets([1, 2, 3]));
