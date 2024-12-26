@@ -59,7 +59,17 @@
 
 // @lcpr-template-end
 // @lc code=start
-function isHappy(n: number): boolean {}
+function isHappy(n: number): boolean {
+  const seen = new Set<number>();
+  while (n !== 1 && !seen.has(n)) {
+    seen.add(n);
+    n = n
+      .toString()
+      .split('')
+      .reduce((sum, num) => sum + Number(num) ** 2, 0);
+  }
+  return n === 1;
+}
 // @lc code=end
 
 /*
