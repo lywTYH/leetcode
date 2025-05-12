@@ -8,6 +8,13 @@
 const isPrefixAndSuffix = (word1: string, word2: string): boolean => {
   return word1.startsWith(word2) && word1.endsWith(word2);
 };
+
+enum NextDirection {
+  left,
+  right,
+  down,
+  up,
+}
 function countPrefixSuffixPairs(words: string[]): number {
   let count = 0;
   for (let i = 0; i < words.length; i++) {
