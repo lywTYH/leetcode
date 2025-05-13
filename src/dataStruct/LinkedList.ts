@@ -105,7 +105,7 @@ export default class LinkedList<T = string | number> {
     return this.findByCallback(callback);
   }
 
-  public findByCallback(callback: (v: T) => boolean) {
+  public findByCallback(callback: (_v: T) => boolean) {
     let currentNode = this.head;
     while (currentNode) {
       if (callback(currentNode.value)) {

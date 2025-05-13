@@ -13,7 +13,7 @@ function spiralOrder(matrix: number[][]): number[] {
   let left = 0;
   let right = matrix[0].length - 1;
 
-  // eslint-disable-next-line no-constant-condition
+   
   while (true) {
     for (let i = left; i <= right; i++) {
       res.push(matrix[top][i]);

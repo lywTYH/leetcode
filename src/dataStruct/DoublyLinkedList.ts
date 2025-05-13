@@ -132,7 +132,7 @@ export default class DoublyLinkedList<T> {
     return nodes;
   }
 
-  public toString(callback?: (val: T) => string) {
+  public toString(callback?: (_val: T) => string) {
     return this.toArray()
       .map((node) => node.toString(callback))
       .toString();

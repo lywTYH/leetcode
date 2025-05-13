@@ -4,7 +4,7 @@ const defaultHashTableSize = 32;
 export default class HashTable<T = string | number> {
   public buckets: LinkedList<{ key: string; value: T }>[];
   public keys: {
-    [key in string]: number;
+    [_key in string]: number;
   };
   constructor(hashTableSize = defaultHashTableSize) {
     this.buckets = Array(hashTableSize)

@@ -29,7 +29,7 @@ export default class Stack<T> {
   toArray() {
     return this.linkedList.toArray().map((node) => node.value);
   }
-  toString(callback?: (value: T) => string) {
+  toString(callback?: (_value: T) => string) {
     return this.linkedList.toString(callback);
   }
 }

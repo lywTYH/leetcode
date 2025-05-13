@@ -26,7 +26,7 @@ export default class Queue<T = string | number> {
     this.linkedList.deleteHead();
     return this;
   }
-  toString(callBack?: (value: T) => string) {
+  toString(callBack?: (_value: T) => string) {
     return this.linkedList.toString(callBack);
   }
 }

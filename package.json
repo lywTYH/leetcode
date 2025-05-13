@@ -1,6 +1,6 @@
 {
   "name": "leetcode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "leetcode and algorithms",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:watch": "cross-env NODE_ENV=test jest --env=jsdom",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
-    "lint": "eslint \"./src/**/*.ts\" --fix",
+    "lint": "eslint",
     "lint-staged:ts": "eslint"
   },
   "author": "lyw",
@@ -16,31 +16,30 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "dependencies": {
-    "benchmark": "^2.1.4",
-    "typescript": "^5.3.3"
-  },
-  "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "husky": "^9.0.11",
-    "jest": "^29.7.0",
-    "lint-staged": "^15.2.2",
-    "npm-check-updates": "^16.14.15",
-    "prettier": "^3.2.5",
-    "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2"
-  },
   "lint-staged": {
     "**/*.{js,ts,json}": [
       "prettier --config .prettierrc --write",
       "git add"
     ],
     "**/*.{ts}": "npm run lint-staged:ts"
+  },
+  "dependencies": {
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.17",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.5",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "lint-staged": "^16.0.0",
+    "npm-check-updates": "^18.0.1",
+    "prettier": "^3.5.3",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2"
   }
 }
